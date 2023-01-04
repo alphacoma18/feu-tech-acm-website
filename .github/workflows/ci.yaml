@@ -1,0 +1,62 @@
+---
+name: Next Continuous Integration
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  lint-and-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          # Fetch all commits
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.8.0
+          cache: "npm"
+
+      - name: Lint Code Base
+        uses: github/super-linter@v4
+        env:
+          VALIDATE_ALL_CODEBASE: false
+          DEFAULT_BRANCH: "master"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+          LINTER_RULES_PATH: /
+          CSS_FILE_NAME: .stylelintrc.json
+          VALIDATE_TYPESCRIPT_STANDARD: false
+
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
+
+      - name: Semantic Versioning
+        id: versioning
+        uses: PaulHatch/semantic-version@v4.0.2
+        with:
+          branch: master
+          tag_prefix: "v"
+          major_pattern: "BREAKING CHANGE:"
+          minor_pattern: "feat:"
+          format: "v${major}.${minor}.${patch}-prerelease${increment}"
+          # fix is the default pattern so we don't need to specify it
+
+      - name: Create Release
+        if: ${{ !startsWith(github.ref, 'refs/tags/') }}
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.github_token }}
+        with:
+          tag_name: ${{ steps.versioning.outputs.version }}
+          release_name: ${{ steps.versioning.outputs.version }}
+          prerelease: true
+          # create a pre-release for every push to master
