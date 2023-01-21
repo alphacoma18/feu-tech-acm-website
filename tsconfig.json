@@ -40,7 +40,7 @@
 		"**/*.tsx",
 		"app/page.tsx",
 		".next/types/**/*.ts"
-	],
+, "components/gen/snow/index.tx"	],
 	"exclude": ["node_modules"],
 	"ts-standard": {
 		"project": "./tsconfig.json"

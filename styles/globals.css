@@ -1,15 +1,7 @@
 :root {
-  --acm-blue: #0182ac;
-  --acm-light-blue: #83cee2;
-  --acm-dark-blue: #09357a;
-  --acm-orange: #fc9200;
-  --acm-yellow: #ffd600;
-  --acm-green: #a6bc09;
-  --acm-purple: #65016b;
-  --acm-black: rgb(39 39 42 / var(--tw-bg-opacity));
-
-  --black: #000000;
-  --white: #ffffff;
+  --retro-purple: #5f24a4;
+  --retro-black: #080808;
+  --retro-white: #ffffff;
 
   --bs-shadow: rgba(0, 0, 0, 0.4);
   --bs-down: 0px 4px 8px 0px var(--bs-shadow);
@@ -17,12 +9,13 @@
   --bs-left: -4px 0px 8px 0px var(--bs-shadow);
   --bs-right: 4px 0px 8px 0px var(--bs-shadow);
 
-  --color-black: var(--black);
-  --color-white: var(--white);
-  --color-blue: var(--acm-blue);
-  --bg-black: var(--black);
-  --bg-white: var(--white);
-  --bg-blue: var(--acm-blue);
+  --color-black: var(--retro-black);
+  --color-white: var(--retro-white);
+  --color-purple: var(--retro-purple);
+
+  --bg-black: var(--retro-black);
+  --bg-white: var(--retro-white);
+  --bg-purple: var(--retro-purple);
 
   --font: Montserrat, arial, helvetica, sans-serif;
   --transition: color 100ms ease-in-out, background 100ms ease-in-out;
@@ -31,7 +24,7 @@
 ::-moz-selection,
 ::selection,
 ::target-text {
-  background: var(--bg-blue);
+  background: var(--bg-purple);
   color: var(--color-white);
 }
 
@@ -57,6 +50,7 @@
 ::before {
   box-sizing: border-box;
 }
+
 html,
 nav,
 footer,
@@ -64,24 +58,35 @@ main,
 section,
 div,
 span {
-  scrollbar-color: var(--bg-black) transparent;
+  scrollbar-color: var(--bg-purple) var(--bg-black);
   scrollbar-width: thin;
 }
 
 *,
 html {
-  color: var(--color);
   margin: 0;
   padding: 0;
   transition: var(--transition);
 }
 
 body {
-  caret-color: var(--color-blue);
+  animation: init 1000ms ease-in-out;
+  caret-color: var(--color-purple);
+  color: var(--color-white);
   font-family: var(--font);
   font-size: 16px;
-  height: 1000vh;
   line-height: 1.6rem;
+  scroll-behavior: smooth;
+}
+
+@keyframes init {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 #__next {

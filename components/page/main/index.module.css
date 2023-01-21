@@ -1,0 +1,9 @@
+.main {
+    min-height: 200vh;
+}
+.container {
+    background: #cccccc;
+    height: 100%;
+    position: relative;
+    width: 100%;
+}

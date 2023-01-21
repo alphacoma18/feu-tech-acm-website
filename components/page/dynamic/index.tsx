@@ -5,6 +5,11 @@ export const Nav = dynamic(() => import("../nav/index"), {
 	ssr: false,
 });
 
+export const Main = dynamic(() => import("../main/index"), {
+	loading: () => <p>Loading...</p>,
+	ssr: false,
+});
+
 export const Footer = dynamic(() => import("../footer/index"), {
 	loading: () => <p>Loading...</p>,
 	ssr: false,
