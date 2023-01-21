@@ -33,8 +33,6 @@ jobs:
 
           LINTER_RULES_PATH: /
           CSS_FILE_NAME: .stylelintrc.json
-          VALIDATE_TYPESCRIPT_STANDARD: false
-
       - run: npm ci
       - run: npm run lint
       - run: npm run build

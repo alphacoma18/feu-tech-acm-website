@@ -13,11 +13,37 @@
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"jsx": "preserve",
-		"incremental": true
+		"incremental": true,
+		"plugins": [
+			{
+				"name": "next"
+			}
+		],
+		"baseUrl": ".",
+		"paths": {
+			"@/components/*": ["components/*"],
+			"@/lib/*": ["lib/*"],
+			"@/pages/*": ["pages/*"],
+			"@/public/*": ["public/*"],
+			"@/styles/*": ["styles/*"],
+			"@/types/*": ["types/*"],
+			"@/utils/*": ["utils/*"],
+			"@/dynamic/*": ["components/page/dynamic/*"],
+		}
 	},
-	"include": [".eslintrc.json", ".stylelintrc.json","next.config.js", "next-env.d.ts", "**/*.ts", "**/*.tsx"],
+	"include": [
+		".eslintrc.json",
+		".stylelintrc.json",
+		"next.config.js",
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		"app/page.tsx",
+		".next/types/**/*.ts"
+	],
 	"exclude": ["node_modules"],
 	"ts-standard": {
 		"project": "./tsconfig.json"
-	}
+	},
+	"types": ["react/next"]
 }

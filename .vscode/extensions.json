@@ -1,0 +1,11 @@
+{
+	"recommendations": [
+		"phoenisx.cssvar",
+		"clinyong.vscode-css-modules",
+		"streetsidesoftware.code-spell-checker",
+		"maptz.camelcasenavigation",
+		"deque-systems.vscode-axe-linter",
+		"stylelint.vscode-stylelint",
+		"dsznajder.es7-react-js-snippets"
+	]
+}

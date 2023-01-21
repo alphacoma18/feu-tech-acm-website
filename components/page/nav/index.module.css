@@ -1,0 +1,29 @@
+.nav {
+    align-items: stretch;
+    background: var(--bg-black);
+    box-shadow: var(--bs-down);
+    color: var(--color-white);
+    border-top: 3px solid var(--bg-white);
+    display: flex;
+    font-weight: bold;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+.logo, .links {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.links a {
+    padding: .8rem;
+    text-decoration: none;
+}
+
+.links a:hover {
+    color: var(--color-blue);
+}

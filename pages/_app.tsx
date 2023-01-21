@@ -1,13 +1,33 @@
+import { NextPage } from "next";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import NextNProgress from "nextjs-progressbar";
+import { ReactElement, ReactNode } from "react";
 import "../styles/globals.css";
-export default function App({ Component, pageProps }: AppProps) {
+export type NextPageWithLayout<P = Record<string, never>, IP = P> = NextPage<
+	P,
+	IP
+> & {
+	getLayout?: (page: ReactElement) => ReactNode;
+};
+type AppPropsWithLayout = AppProps & {
+	Component: NextPageWithLayout;
+};
+export default function App(props: AppPropsWithLayout) {
+	const {
+		Component,
+		pageProps: { ...pageProps },
+	} = props;
+	const getLayout = Component.getLayout ?? ((page) => page);
 	return (
 		<>
 			<Head>
 				<meta charSet="utf-8" />
-				<title>FEU TECH ACM</title>
+				<title>FEU TECH ACM Student Chapter</title>
+				<meta
+					name="description"
+					content="The Official Website of the 2nd internationally recognized student chapter of ACM in the country."
+				/>
 				<meta
 					name="viewport"
 					content="width=device-width, initial-scale=1.0, minimum-scale=1.0, shrink-to-fit=no, viewport-fit=cover"
@@ -15,12 +35,12 @@ export default function App({ Component, pageProps }: AppProps) {
 			</Head>
 			<NextNProgress
 				// puts the loader at the bottom right
-				color={"#007acc"}
+				color={"#0182ac"}
 				transformCSS={(css) => {
 					return <style>{css.replace("top: 15px;", "bottom: 15px;")}</style>;
 				}}
 			/>
-			<Component {...pageProps} />;
+			{getLayout(<Component {...pageProps} />)}
 		</>
 	);
 }
