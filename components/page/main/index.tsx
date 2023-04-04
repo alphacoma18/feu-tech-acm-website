@@ -1,11 +1,13 @@
 import GenSnow from "@/components/gen/snow";
+import { Header } from "..";
 import styles from "./index.module.css";
-const Main: React.FC = () => {
+export default () => {
 	return (
 		<main className={styles.main}>
 			<GenSnow />
-			<div className={styles.container}></div>
+			<div className={styles.container}>
+				<Header />
+			</div>
 		</main>
 	);
 };
-export default Main;

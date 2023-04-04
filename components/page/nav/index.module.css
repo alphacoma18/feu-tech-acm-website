@@ -2,17 +2,19 @@
     box-shadow: var(--bs-down);
     color: var(--color-white);
     font-weight: bold;
-    position: -webkit-sticky;
-    position: sticky;
+    /* position: -webkit-sticky; */
+    /* position: sticky; */
+    position: fixed;
     top: 0;
+    width: 100%;
     z-index: 5;
 }
 
 .flex {
     align-items: stretch;
-    background: var(--bg-black);
     display: flex;
     justify-content: space-between;
+    padding: .5rem;
 }
 
 .logo,
@@ -23,32 +25,39 @@
 }
 
 .links {
+    display: flex;
+    gap: .5rem;
     overflow-x: auto;
 }
 
 .logo {
+    font-weight: bold;
     padding: 0 1rem;
 }
 
 .links a {
-    padding: 1rem;
+    /* perfect pill shaped button */
+    border-radius: 500px;
+    padding: .2rem .8rem;
 }
 
-.links a:hover {
+.links a:is(:hover, :focus) {
     background: var(--bg-purple);
 }
 
 .container {
-    background: #cccccc;
-    height: .4rem;
+    background: var(--bg-black);
+    /* background: var(--bg-purple); */
+    height: .2rem;
     width: 100%;
 }
 
 .bar {
     background: var(--bg-purple);
-    height: 8px;
+    height: 100%;
     width: 0%;
 }
+
 
 @media screen and (max-width: 768px) {
     .flex {
@@ -59,6 +68,68 @@
 
 @media screen and (max-width: 480px) {
     .links {
-        display: none;
+        background: var(--bg-black);
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        justify-content: center;
+        left: 0;
+        position: fixed;
+        top: 0;
+        z-index: 10;
+    }
+
+    .logo {
+        padding: 0;
+    }
+
+    .flex {
+        flex-direction: row;
+    }
+
+    .menuContainer {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        justify-content: center;
+        z-index: 10;
+    }
+
+    .menuLines {
+        background: var(--bg-white);
+        border-radius: 500px;
+        height: 6px;
+        width: 35px;
+    }
+
+    .toggledNav {
+        animation: slideIn 500ms ease-in-out;
+        width: 100vw;
+    }
+
+    .untoggledNav {
+        animation: slideOut 500ms ease-in-out;
+        width: 0;
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100vw;
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        width: 100vw;
+    }
+
+    100% {
+        width: 0;
     }
 }

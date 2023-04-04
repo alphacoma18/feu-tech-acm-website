@@ -35,7 +35,7 @@ export default function App(props: AppPropsWithLayout) {
 			</Head>
 			<NextNProgress
 				// puts the loader at the bottom right
-				color={"#0182ac"}
+				color={"#5f24a4"}
 				transformCSS={(css) => {
 					return <style>{css.replace("top: 15px;", "bottom: 15px;")}</style>;
 				}}

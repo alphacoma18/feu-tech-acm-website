@@ -1,11 +1,10 @@
 import styles from "./index.module.css";
-const Footer: React.FC = () => {
+export default () => {
 	return (
 		<footer className={styles.footer}>
 			<div className={styles.copyright}>
-				Copyright &copy; 2021 FEU TECH ACM. All rights reserved.
+				Copyright &copy; 2023 FEU TECH ACM. All rights reserved.
 			</div>
 		</footer>
 	);
 };
-export default Footer;

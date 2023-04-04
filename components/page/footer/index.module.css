@@ -2,8 +2,8 @@
     background: var(--bg-black);
     color: var(--color-white);
     padding: 1rem;
-    z-index: 10;
     position: relative;
+    z-index: 10;
 }
 
 .copyright {

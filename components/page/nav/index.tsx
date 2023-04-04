@@ -1,8 +1,10 @@
 import GenImage from "@/components/gen/image";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./index.module.css";
-const Nav: React.FC = () => {
+
+export default () => {
+	const [isToggled, setIsToggled] = useState<boolean>(false);
 	const scrollRef = useRef<HTMLDivElement>(null);
 	const scrollListener = () => {
 		if (scrollRef.current) {
@@ -33,15 +35,26 @@ const Nav: React.FC = () => {
 					/>
 					<div>FEU&nbsp;TECH&nbsp;ACM</div>
 				</Link>
-				<span className={styles.links}>
+				<span
+					className={`${styles.links} ${
+						isToggled ? styles.toggledNav : styles.untoggledNav
+					}`}
+				>
 					<Link href={"#about"}>About</Link>
 					<Link href={"#committees"}>Committees</Link>
 					<Link href={"#events"}>Events</Link>
-					<Link href={"#Register"}>Register</Link>
+					<Link href={"#sponsors"}>Sponsors</Link>
 					<Link href={"#contact"}>Contact</Link>
 				</span>
+				<button
+					className={`omitFromMobile ${styles.menuContainer}`}
+					onClick={() => setIsToggled((prev) => !prev)}
+				>
+					<div className={styles.menuLines}></div>
+					<div className={styles.menuLines}></div>
+					<div className={styles.menuLines}></div>
+				</button>
 			</span>
 		</nav>
 	);
 };
-export default Nav;

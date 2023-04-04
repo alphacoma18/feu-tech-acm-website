@@ -1,0 +1,23 @@
+.hero {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    text-align: center;
+    width: 100vw;
+}
+
+.googleTranslate {
+    bottom: 0;
+    position: absolute;
+    right: 0;
+    z-index: 100;
+}
+
+.heroText {
+    left: 1rem;
+    opacity: .6;
+    position: absolute;
+    /* top: 0; */
+}

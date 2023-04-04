@@ -14,18 +14,41 @@ const withPWA = require('next-pwa')({
     audio: '',
     video: ''
   }
-})
+});
+
+// https://nextjs.org/docs/advanced-features/security-headers
+const securityHeaders = [
+  {
+    key: 'X-DNS-Prefetch-Control',
+    value: 'on'
+  },
+  {
+    key: 'Strict-Transport-Security',
+    value: 'max-age=63072000; includeSubDomains; preload'
+  },
+  {
+    key: 'X-XSS-Protection',
+    value: '1; mode=block'
+  },
+  {
+    key: 'X-Frame-Options',
+    value: 'SAMEORIGIN'
+  },
+  {
+    key: 'X-Content-Type-Options',
+    value: 'nosniff'
+  }
+];
 
 module.exports = withPWA({
   reactStrictMode: true,
   swcMinify: true,
-  images: {
-    domains: [
-      'lh3.googleusercontent.com',
-      'avatars.githubusercontent.com',
-      'platform-lookaside.fbsbx.com',
-      'media-exp1.licdn.com',
-      'pbs.twimg.com'
-    ]
+  async headers () {
+    return [
+      {
+        source: '/:path*',
+        headers: securityHeaders,
+      },
+    ];
   },
-})
+});
